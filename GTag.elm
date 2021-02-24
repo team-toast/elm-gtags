@@ -1,4 +1,4 @@
-port module GTag exposing (GTagData, gTagOut)
+port module GTag exposing (GTagData, GTagHistory, emptyGtagHistory, gTagOut, gTagOutOnlyOnLabelOrValueChange, gTagOutOnlyOnceForEvent)
 
 import Json.Decode
 import Json.Encode
@@ -9,6 +9,13 @@ import Set exposing (Set)
 type alias GTagHistory =
     { sentOnlyOnce : Set String
     , sentOnlyOnChange : List GTagData
+    }
+
+
+emptyGtagHistory : GTagHistory
+emptyGtagHistory =
+    { sentOnlyOnce = Set.empty
+    , sentOnlyOnChange = []
     }
 
 
